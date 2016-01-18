@@ -1,0 +1,57 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: Admin\BlogBundle\Entity\Post
+    namespace_prefix: Admin
+    concurrency_lock: ~
+    bundle_name: BlogBundle
+    pk_requirement: ~
+    fields:
+        category:
+          label: Category
+          formType: entity
+
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: List for BlogBundle
+            display: [title, description,imageUrl,category, user]
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    new:
+        params:
+            title: New object for BlogBundle
+            display: [title,imageUrl,description,content,user,category]
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Post.title }|"
+            display: [title,imageUrl,description,content,user,category]
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Post.title }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

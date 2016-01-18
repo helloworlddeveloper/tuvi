@@ -1,0 +1,31 @@
+admingenerator_generator:
+    # choose  and enable at least one
+    use_propel:           false
+    use_doctrine_orm:     true
+    use_doctrine_odm:     false
+    base_admin_template: AdminBlogBundle::layout.html.twig
+
+    form_types:
+        doctrine_orm:
+            datetime:     datetime
+            vardatetime:  datetime
+            datetimetz:   datetime
+            date:         datetime
+            time:         time
+            decimal:      number
+            float:        number
+            integer:      integer
+            bigint:       integer
+            smallint:     integer
+            string:       text
+            text:         textarea
+            entity:       entity
+            collection:   collection
+            array:        collection
+            boolean:      checkbox
+knp_menu:
+  twig: true
+
+jms_security_extra:
+  expressions: true
+

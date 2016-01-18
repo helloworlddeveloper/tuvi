@@ -1,0 +1,9 @@
+admin:
+    path:     /
+    defaults: { _controller: UserBundle:Welcome:index }
+
+welcome_admin_homepage:
+    path:     /welcome
+    defaults: { _controller: UserBundle:Welcome:index }
+
+

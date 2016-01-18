@@ -1,0 +1,24 @@
+ivory_ck_editor:
+    default_config: content_config_1
+    configs:
+        content_config_1:
+            toolbar: "content_toolbar_1"
+            uiColor: "#ffffff"
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
+    toolbars:
+        configs:
+            content_toolbar_1:
+                - ['Source', '-', 'NewPage', 'Preview', 'Print', '-', 'Templates']
+                - ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']
+                - ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt']
+                - ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'SelectField', 'Button', 'ImageButton', 'HiddenField']
+                - '/'
+                - ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']
+                - ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']
+                - ['Link', 'Unlink', 'Anchor']
+                - [ 'oembed', 'wordcount', 'Image','Video', 'FLash', 'Table', 'HorizontalRule', 'SpecialChar', 'Smiley', 'PageBreak', 'Iframe']
+                - '/'
+                - ['Styles', 'Format', 'Font', 'FontSize', 'TextColor', 'BGColor']
+                - ['Maximize', 'ShowBlocks']
+                - ['About']

@@ -1,0 +1,12 @@
+<?php
+
+namespace Admin\BlogBundle\Form\Type\Category;
+
+use Admingenerated\AdminBlogBundle\Form\BaseCategoryType\EditType as BaseEditType;
+
+/**
+ * EditType
+ */
+class EditType extends BaseEditType
+{
+}

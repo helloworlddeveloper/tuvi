@@ -1,0 +1,6 @@
+{% extends_admingenerated "AdminBlogBundle:PostList:row.html.twig" %}
+    {% block list_td_column_imageUrl %}
+        {#{% set runtimeConfig = {"thumbnail": {"size": [50, 50] }} %}#}
+        <img src="{{ Post.imageUrl}}" title="{{ Post.title }}" alt="{{ Post.title }}"  width='70' height='70' >
+    {% endblock list_td_column_imageUrl %}
+{% block list_td_column_category %}{{ Post.category.name }}{% endblock list_td_column_category %}

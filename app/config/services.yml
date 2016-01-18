@@ -1,0 +1,15 @@
+parameters:
+    ccdn_user_security.component.authentication.handler.login_failure_handler.class: UserBundle\Security\Authentication\Handler\LoginFailureHandler
+    ccdn_user_security.component.authentication.handler.logout_success_handler.class: UserBundle\Security\Authentication\Handler\LogoutSuccessHandler
+    
+services:
+    ccdn_user_security.component.authentication.handler.login_failure_handler:
+        class:  %ccdn_user_security.component.authentication.handler.login_failure_handler.class%
+        arguments:  [@service_container, @router, @doctrine.orm.entity_manager]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' } 
+    ccdn_user_security.component.authentication.handler.logout_success_handler:
+        class:  %ccdn_user_security.component.authentication.handler.logout_success_handler.class%
+        arguments:  [@service_container, @router]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }

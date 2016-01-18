@@ -1,0 +1,1 @@
+{% extends_admingenerated "AdminBlogBundle:CategoryList:results.html.twig" %}

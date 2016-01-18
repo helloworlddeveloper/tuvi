@@ -1,0 +1,51 @@
+liip_imagine:
+
+    resolvers:
+        default:
+            web_path:
+                web_root:  %kernel.root_dir%/../web
+#                cache_prefix: media/cache
+
+    loaders:
+        default:
+            filesystem:
+                data_root: %kernel.root_dir%/../web/
+
+    driver:               gd
+    cache:                default
+    data_loader:          default
+    default_image:        null
+#    controller:
+#        filter_action:         liip_imagine.controller:filterAction
+#        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+
+    filter_sets:
+#        cache: ~
+        small:
+            quality: 80
+            filters:
+                thumbnail: { size: [80, 80], mode: outbound }
+        thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [276, 155], mode: outbound }
+        medium:
+            quality: 100
+            filters:
+                thumbnail: { size: [368, 207], mode: outbound }
+        large:
+            quality: 100
+            filters:
+                thumbnail: { size: [788, 443], mode: outbound }
+        slide:
+            quality: 100
+            filters:
+                thumbnail: { size: [851, 450], mode: outbound }
+        banner:
+            quality: 100
+            filters:
+                thumbnail: { size: [401, 100], mode: outbound }
+        member_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [220, 220], mode: outbound }

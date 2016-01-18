@@ -1,0 +1,53 @@
+<?php
+
+namespace Admin\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostTags
+ *
+ * @ORM\Table(name="post_tags", indexes={@ORM\Index(name="PostTag_tag", columns={"tag_id"}), @ORM\Index(name="PostTag_post", columns={"post_id"})})
+ * @ORM\Entity
+ */
+class PostTags
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="post_tags_id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $postTagsId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="bigint", nullable=true)
+     */
+    private $userId;
+
+    /**
+     * @var \Post
+     *
+     * @ORM\ManyToOne(targetEntity="Post")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * })
+     */
+    private $post;
+
+    /**
+     * @var \Tags
+     *
+     * @ORM\ManyToOne(targetEntity="Tags")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     * })
+     */
+    private $tag;
+
+
+}
+

@@ -1,0 +1,12 @@
+<?php
+
+namespace Admin\BlogBundle\Form\Type\Category;
+
+use Admingenerated\AdminBlogBundle\Form\BaseCategoryType\NewType as BaseNewType;
+
+/**
+ * NewType
+ */
+class NewType extends BaseNewType
+{
+}

@@ -1,0 +1,8 @@
+{% extends_admingenerated "AdminBlogBundle:PostEdit:form.html.twig" %}
+{% block form_col_content %}
+    <div class="col-md-10 form-model-field form-model-field-content form-model-type-textarea">
+        {% block form_row_content %}
+            {{ form_row(form['content']) }}
+        {% endblock form_row_content %}
+    </div>
+{% endblock form_col_content %}

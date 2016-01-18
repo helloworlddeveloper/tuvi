@@ -1,0 +1,15 @@
+AdminBlogBundle_admin_admin_blog_bundle_Post:
+    resource: "@AdminBlogBundle/Controller/Post/"
+    type:     admingenerator
+    prefix:   /post
+
+AdminBlogBundle_admin_admin_blog_bundle_Category:
+    resource: "@AdminBlogBundle/Controller/Category/"
+    type:     admingenerator
+    prefix:   /category
+
+AdminBlogBundle_admin_admin_blog_bundle_User:
+    resource: "@AdminBlogBundle/Controller/User/"
+    type:     admingenerator
+    prefix:   /user
+
