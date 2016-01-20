@@ -63,7 +63,8 @@ class LunarYear
 
     public static function JDtoDate($jd)
     {
-        return $dateTimeString = jdtogregorian($jd);
+        $dateTimeString = jdtogregorian($jd);
+        return new DateTime($dateTimeString);
     }
 
     private function StrartLun($prevDongChi, $offset)
@@ -75,10 +76,6 @@ class LunarYear
         $dongChi = LunarYear::JDtoDate($prevDongChi + $offset);
         $newMoon = LunarYear::JDtoDate($newMoonAfterDongChi + $offset);
         $newMoon2 = LunarYear::JDtoDate($newMoonAfterDongChi2 + $offset);
-
-        $newMoon = new DateTime($newMoon);
-        $dongChi = new DateTime($dongChi);
-        $newMoon2 = new DateTime($newMoon2);
 
         if ($newMoon < $dongChi & $newMoon2 >= $dongChi) {
             $lun++;

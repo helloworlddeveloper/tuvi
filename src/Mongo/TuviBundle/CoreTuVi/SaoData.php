@@ -13,7 +13,7 @@ class  SaoData
     /*var: int*/
     public $ID;
     /*var: string*/
-    public $Ten = ""; //Tên sao
+    public $Ten = ""; //TÃªn sao
     /*var: int*/
     public $Hanh;
 
@@ -22,16 +22,16 @@ class  SaoData
     /*var: bool*/
     public $CacTinh;
 
-    //M?i m?t sao mang m?t hành,tu? theo v? trí ?óng thu?c cung nào thì ng??i ta quy ??nh mi?u, v??ng ,??c , bình , hãm
-    public $Vuong = ""; // V??ng
+
+    public $Vuong = "";
     /*var: string*/
-    public $Mieu = "";  // Mi?u
+    public $Mieu = "";
     /*var: string*/
-    public $Dac = "";   // ??c
+    public $Dac = "";
     /*var: string*/
-    public $Binh = "";  // Bình
+    public $Binh = "";
     /*var: string*/
-    public $Ham = "";  // Hãm
+    public $Ham = "";
 
     public function __construct1($id, $ten, $hanh, $dac, $ham, $mieu, $vuong, $binh, $bacdt)
     {
