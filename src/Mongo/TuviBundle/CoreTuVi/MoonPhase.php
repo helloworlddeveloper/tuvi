@@ -35,7 +35,6 @@ class MoonPhase
 
     public static function NewMoonLun($lun)
     {
-        $newmoon = new DateTime(1900, 1, 1, 0, 0, 0);
         $JDE = MoonPhase::moonphasebylunation($lun - 953, 0);
         $event_date = MoonPhase::JDtoDate($JDE);
         return $event_date;
@@ -43,7 +42,8 @@ class MoonPhase
 
     public static function JDtoDate($jd)
     {
-        return $dateTimeString = jdtogregorian($jd);
+        $dateTimeString = jdtogregorian($jd);
+        return new DateTime($dateTimeString);
     }
     public static function torad($x)
     {

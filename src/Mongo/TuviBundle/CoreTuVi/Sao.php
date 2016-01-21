@@ -91,7 +91,7 @@ class Sao
         $temp = $csao->Dac;
         if (strpos($temp,$dh)> -1)
         {
-            return '?';
+            return 'Đ';
         }
         if (strlen($csao->Ham) == 0 && strlen($temp) >0)
         {
