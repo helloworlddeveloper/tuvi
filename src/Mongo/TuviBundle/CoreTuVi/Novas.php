@@ -7,7 +7,7 @@
  */
 
 namespace Mongo\TuviBundle\CoreTuVi;
-
+use \DateTime;
 
 class Novas
 {
@@ -891,9 +891,23 @@ class Novas
         $secdiff = 0.001658 * sin($e) + 2.073E-05 * sin($j - $lj);
         $tdtjd = $tdb - $secdiff / 86400.0;
     }
+
     public static function julian_date($year, $month, $day, $hour)
     {
-    $jd12h = $day - (32075L) + (1461L) * ($year + 4800L + ($month - 14L) / 12L) / 4L + 367L * ($month - 2L - ($month - 14L) / 12L * 12L) / 12L - 3L * (($year + 4900L + ($month - 14L) / 12L) / 100L) / 4L;
-    return doubleval(jd12h) - 0.5 + $hour / 24.0;
+        $jd12h = gregoriantojd($month, $day, $year);
+        return doubleval($jd12h) - 0.5 + $hour / 24.0;
+    }
+
+    private static function cal_date($tjd, &$year, &$month, &$day, &$hour)
+    {
+        $djd = $tjd + 0.5;
+        $jd = $djd;
+        $hour = $djd % 1.0 * 24.0;
+        $dateTimeString = jdtogregorian($jd);
+        $datetime = new DateTime($dateTimeString);
+        $datetime->format('w');
+        $month = $datetime->format('m');
+        $day = $datetime->format('d');
+        $year = $datetime->format('y');
     }
 }
