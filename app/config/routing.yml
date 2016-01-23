@@ -1,16 +1,5 @@
-mongo_tuvi:
-    resource: "@MongoTuviBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-core_tuvi:
-    resource: "@CoreTuviBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-core_tu_vi_tuvi:
-    resource: "@CoreTuViTuviBundle/Controller/"
-    type:     annotation
+tu_vi:
+    resource: "@MongoTuviBundle/Resources/config/routing.yml"
     prefix:   /
 
 admin:

@@ -1,0 +1,3 @@
+tu_vi_homepage:
+    path:     /
+    defaults: { _controller: MongoTuviBundle:Default:index }

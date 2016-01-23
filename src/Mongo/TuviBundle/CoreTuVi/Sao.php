@@ -51,7 +51,7 @@ class Sao
      */
     public  $IsPhiTinh;
 
-    function __construct($id,$pos, $type,SaoData $SaoData, SaoDatabase $SaoDatabase)
+    function __construct1($id,$pos, $type,SaoData $SaoData, SaoDatabase $SaoDatabase)
     {
         $this->ID = $id;
         $this->Type = $type;

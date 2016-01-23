@@ -95,8 +95,9 @@ class AnSao
 
     public function __construct($gio, $ngay, $thang, $tcnam, $dcnam, $phai)
     {
-        $this->BoSao = new Sao[162];
-        for ($i = 0; $i < count($this->BoSao); $i++) {
+        $sumBoSao = 162;
+        $this->BoSao = array();
+        for ($i = 0; $i < $sumBoSao; $i++) {
             $this->BoSao[$i] = new Sao();
         }
         $this->CurPos = 0;
@@ -439,11 +440,11 @@ class AnSao
         $this->BoSao[$this->CurPos] = new Sao(1, $pos, 'C');
         $this->CurPos++;
         $pos += 4;
-        $pos = AnSao::XetSo(pos);
+        $pos = AnSao::XetSo($pos);
         $this->BoSao[$this->CurPos] = new Sao(2, $pos, 'C');
         $this->CurPos++;
         $pos += 3;
-        $pos = AnSao::XetSo(pos);
+        $pos = AnSao::XetSo($pos);
         $this->BoSao[$this->CurPos] = new Sao(3, $pos, 'C');
         $this->CurPos++;
         $pos++;
@@ -483,7 +484,7 @@ class AnSao
         $this->CurPos++;
         $pos++;
         $pos = AnSao::XetSo($pos);
-        $this::BoSao[$this->CurPos] = new Sao(13, $pos, 'C');
+        $this->BoSao[$this->CurPos] = new Sao(13, $pos, 'C');
         $this->CurPos++;
         $pos += 4;
         $pos = AnSao::XetSo($pos);
@@ -1197,7 +1198,7 @@ class AnSao
     private function FindID($id)
     {
         for ($i = 0; $i < 141; $i++) {
-            if ($this->BoSao[$i]->ID == $id & $this->BoSao[$i]->IsRealSao) {
+            if ($this->BoSao[$i]->ID == $id && $this->BoSao[$i]->IsRealSao) {
                 return $i;
             }
         }
@@ -1206,8 +1207,9 @@ class AnSao
 
     public function PhanCung()
     {
-        $BoCung = new Sao[12];
-        for ($i = 0; $i < count($BoCung); $i++) {
+        $sumBoCung = 12;
+        $BoCung = array();
+        for ($i = 0; $i < $sumBoCung; $i++) {
             $BoCung[$i] = array();
         }
         $boSao = $this->BoSao;
