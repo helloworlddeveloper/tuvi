@@ -7,8 +7,6 @@
  */
 
 namespace Mongo\TuviBundle\CoreTuVi;
-use Mongo\TuviBundle\CoreTuVi\SaoData as SaoData;
-use Mongo\TuviBundle\CoreTuVi\SaoDatabase as SaoDatabase;
 
 class Sao
 {

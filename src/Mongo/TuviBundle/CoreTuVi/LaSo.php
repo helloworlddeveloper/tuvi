@@ -7,7 +7,7 @@
  */
 
 namespace Mongo\TuviBundle\CoreTuVi;
-
+use Mongo\TuviBundle\CoreTuVi\NgayAm;
 
 class LaSo
 {
@@ -36,10 +36,10 @@ class LaSo
     public $ThangA;
 
     /*var int*/
-    public $TCNam; // Thi�n can n?m
+    public $TCNam; // Thiên can
 
     /*var int*/
-    public $DCNam; // ??a can n?m
+    public $DCNam; // Địa can
 
     /*var int*/
     public $BinhGiai = "";
@@ -56,16 +56,21 @@ class LaSo
         $this->Male = $male;
         $this->HasNgayDuong = false;
     }
+
     function __construct2($ten, $male, $ngay, $thang, $nam, $dcgio, $muigio)
     {
         $this->Ten = $ten;
-        $this->NgayA = $ngay;
-        $this->ThangA = $thang;
-//        $this->TCNam = $tcnam;
-//        $this->DCNam = $dcnam;
+        $this->NgayDuong = "$nam-$thang-$ngay";
+        $ngayam = new NgayAm($this->NgayDuong,$muigio);
+        $this->NgayA = $ngayam->Mong;
+        $this->ThangA = $ngayam->Thang;
+        $this->TCNam = $ngayam->TCNam;
+        $this->DCNam = $ngayam->DCNam;
         $this->DCGio = $dcgio;
         $this->MuiGio = $muigio;
         $this->Male = $male;
         $this->HasNgayDuong = false;
     }
+
+    
 }
