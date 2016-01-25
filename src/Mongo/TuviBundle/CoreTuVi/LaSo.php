@@ -81,5 +81,5 @@ class LaSo
         $this->HasNgayDuong = false;
     }
 
-    
+
 }

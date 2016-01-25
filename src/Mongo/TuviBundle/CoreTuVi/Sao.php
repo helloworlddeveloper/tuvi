@@ -51,22 +51,25 @@ class Sao
      */
     public  $IsPhiTinh;
 
-    function __construct1($id,$pos, $type)
+    function __construct($id = null,$pos = null, $type = null)
     {
-        $SaoDatabase = new SaoDatabase();
-        print_r($SaoDatabase);die;
-        $this->ID = $id;
-        $this->Type = $type;
-        $this->Pos = $pos;
-        if ($type == 'C' || $type == 'B' || $type == 'S' || $type == 'K') {
-            $SaoData = $SaoDatabase->getCSData()[$id - 1];
-            $this->Ten = $SaoData->Ten;
-            $this->Hanh = $SaoData->Hanh;
-            $this->BacDauTinh = $SaoData->BacDT;
-            $this->CatTinh = $SaoData->CacTinh;
-            $this->IsRealSao = true;
-            $this->Dia = $this->DacHamDia($pos, $SaoData);
+        if($id != null && $pos != null && $type != null)
+        {
+            $SaoDatabase = new SaoDatabase();
+            $this->ID = $id;
+            $this->Type = $type;
+            $this->Pos = $pos;
+            if ($type == 'C' || $type == 'B' || $type == 'S' || $type == 'K') {
+                $SaoData = $SaoDatabase->getCSData()[$id - 1];
+                $this->Ten = $SaoData->Ten;
+                $this->Hanh = $SaoData->Hanh;
+                $this->BacDauTinh = $SaoData->BacDT;
+                $this->CatTinh = $SaoData->CacTinh;
+                $this->IsRealSao = true;
+                $this->Dia = $this->DacHamDia($pos, $SaoData);
+            }
         }
+
     }
 
     private function DacHamDia($pos,SaoData $csao)
