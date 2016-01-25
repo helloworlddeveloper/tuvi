@@ -100,6 +100,9 @@ class AnSao
         for ($i = 0; $i < $sumBoSao; $i++) {
             $this->BoSao[$i] = new Sao();
         }
+
+        print_r($this->BoSao);die;
+
         $this->CurPos = 0;
         $this->Ngay = $ngay;
         $this->Thang = $thang;
@@ -563,6 +566,7 @@ class AnSao
 
     private function LucSat()
     {
+        print_r($this->BoSao);die;
         $pos = $this->BoSao[$this->FindID(27)]->Pos;
         $pos = AnSao::XetSo($pos - 1);
         $this->BoSao[$this->CurPos] = new Sao(51, $pos, 'B');
@@ -760,10 +764,10 @@ class AnSao
         $pos = $this->BoSao[$this->FindID(64)]->Pos;
         $this->BoSao[$this->CurPos] = new Sao(83, $pos, 'B');
         $this->CurPos++;
-        $pos = AnSao::XetSo($this->BoSao[$this . FindID(58)]->Pos + 2);
+        $pos = AnSao::XetSo($this->BoSao[$this->FindID(58)]->Pos + 2);
         $this->BoSao[$this->CurPos] = new Sao(84, $pos, 'B');
         $this->CurPos++;
-        $pos = AnSao::XetSo($this->BoSao[$this . FindID(58)]->Pos - 2);
+        $pos = AnSao::XetSo($this->BoSao[$this->FindID(58)]->Pos - 2);
         $this->BoSao[$this->CurPos] = new Sao(85, $pos, 'B');
         $this->CurPos++;
     }
