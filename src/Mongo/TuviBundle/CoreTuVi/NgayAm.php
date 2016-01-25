@@ -44,25 +44,26 @@ class NgayAm
 
     public $ThangAm;
 
-    public function __construct1(DateTime $ngayDuong)
+    public function __construct($ngayDuong,$timeZone = null)
     {
-        $this->CANCHIGOC = new DateTime('1898-01-22 00:00:00');
-        $this->NgayDuong = new DateTime($ngayDuong);
-        $year = date_format($this->NgayDuong, 'Y');
-        $this->SolartoLunar($year);
-        $this->FindTCDCNgay();
-        $this->FindTCDCThang();
-
-    }
-
-    public function __construct2($ngayDuong, $timeZone)
-    {
-        $this->NgayDuong = new DateTime($ngayDuong);
-        $this->TimeZone = $timeZone;
-        $year = date_format($this->NgayDuong, 'Y');
-        $this->SolartoLunar($year);
-        $this->FindTCDCNgay();
-        $this->FindTCDCThang();
+        if($timeZone == null)
+        {
+            $this->CANCHIGOC = new DateTime('1898-01-22 00:00:00');
+            $this->NgayDuong = new DateTime($ngayDuong);
+            $year = date_format($this->NgayDuong, 'Y');
+            $this->SolartoLunar($year);
+            $this->FindTCDCNgay();
+            $this->FindTCDCThang();
+        }
+        else
+        {
+            $this->NgayDuong = new DateTime($ngayDuong);
+            $this->TimeZone = $timeZone;
+            $year = date_format($this->NgayDuong, 'Y');
+            $this->SolartoLunar($year);
+            $this->FindTCDCNgay();
+            $this->FindTCDCThang();
+        }
     }
 
     public function GetTCGio($chigio)

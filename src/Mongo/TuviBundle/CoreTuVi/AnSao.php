@@ -266,7 +266,6 @@ class AnSao
         $CCuc = array();
         if ($this->Cuc == 2) {
             $CCuc = array(
-
                 2,
                 3,
                 3,
@@ -438,6 +437,7 @@ class AnSao
         $pos = $CCuc[$this->Ngay - 1];
         $tvpos = $pos;
         $this->BoSao[$this->CurPos] = new Sao(1, $pos, 'C');
+
         $this->CurPos++;
         $pos += 4;
         $pos = AnSao::XetSo($pos);
@@ -490,6 +490,7 @@ class AnSao
         $pos = AnSao::XetSo($pos);
         $this->BoSao[$this->CurPos] = new Sao(14, $pos, 'C');
         $this->CurPos++;
+
     }
 
     private function ThaiTue()
@@ -760,10 +761,10 @@ class AnSao
         $pos = $this->BoSao[$this->FindID(64)]->Pos;
         $this->BoSao[$this->CurPos] = new Sao(83, $pos, 'B');
         $this->CurPos++;
-        $pos = AnSao::XetSo($this->BoSao[$this . FindID(58)]->Pos + 2);
+        $pos = AnSao::XetSo($this->BoSao[$this->FindID(58)]->Pos + 2);
         $this->BoSao[$this->CurPos] = new Sao(84, $pos, 'B');
         $this->CurPos++;
-        $pos = AnSao::XetSo($this->BoSao[$this . FindID(58)]->Pos - 2);
+        $pos = AnSao::XetSo($this->BoSao[$this->FindID(58)]->Pos - 2);
         $this->BoSao[$this->CurPos] = new Sao(85, $pos, 'B');
         $this->CurPos++;
     }
@@ -1041,7 +1042,7 @@ class AnSao
         $tc = $this->TCNam;
         for ($i = 0; $i < 14; $i++) {
             $dc++;
-            $dc = AnSao::XetSo(dc);
+            $dc = AnSao::XetSo($dc);
             $tc++;
             $tc = AnSao::XetSo($tc, 10);
             if ($tc == 1) {

@@ -15,7 +15,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $temp = new AnSao(1, 1, 1, 1, 1, true);
+        $temp = new AnSao(1, 1, 1, 6, 6, true);
             print_r($temp);die;
         return array('name' => 'hello');
 
