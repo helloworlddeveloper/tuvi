@@ -33,7 +33,15 @@ class  SaoData
     /*var: string*/
     public $Ham = "";
 
-    public function __construct1($id, $ten, $hanh, $dac, $ham, $mieu, $vuong, $binh, $bacdt)
+    public function __construct() {
+        $get_arguments       = func_get_args();
+        $number_of_arguments = func_num_args();
+        if (method_exists($this, $method_name = '__construct'.$number_of_arguments)) {
+            call_user_func_array(array($this, $method_name), $get_arguments);
+        }
+    }
+
+    public function __construct9($id, $ten, $hanh, $dac, $ham, $mieu, $vuong, $binh, $bacdt)
     {
         $this->ID = $id;
         $this->Ten = $ten;
@@ -45,7 +53,7 @@ class  SaoData
         $this->Binh = $binh;
         $this->Ham = $ham;
     }
-    public function __construct2($id, $ctinh, $ten, $hanh, $dac, $ham)
+    public function __construct6($id, $ctinh, $ten, $hanh, $dac, $ham)
     {
         $this->ID = $id;
         $this->Ten = $ten;
@@ -54,7 +62,7 @@ class  SaoData
         $this->Ham = $ham;
         $this->CacTinh = $ctinh;
     }
-    public function __construct3($id, $ctinh, $ten, $hanh)
+    public function __construct4($id, $ctinh, $ten, $hanh)
     {
         $this->ID = $id;
         $this->Ten = $ten;

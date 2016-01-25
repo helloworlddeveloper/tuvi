@@ -44,7 +44,16 @@ class LaSo
     /*var int*/
     public $BinhGiai = "";
 
-    function __construct1($ten, $male, $ngay, $thang, $tcnam, $dcnam, $dcgio, $muigio)
+    public function __construct() {
+        $get_arguments       = func_get_args();
+        $number_of_arguments = func_num_args();
+
+        if (method_exists($this, $method_name = '__construct'.$number_of_arguments)) {
+            call_user_func_array(array($this, $method_name), $get_arguments);
+        }
+    }
+
+    function __construct8($ten, $male, $ngay, $thang, $tcnam, $dcnam, $dcgio, $muigio)
     {
         $this->Ten = $ten;
         $this->NgayA = $ngay;
@@ -57,7 +66,7 @@ class LaSo
         $this->HasNgayDuong = false;
     }
 
-    function __construct2($ten, $male, $ngay, $thang, $nam, $dcgio, $muigio)
+    function __construct7($ten, $male, $ngay, $thang, $nam, $dcgio, $muigio)
     {
         $this->Ten = $ten;
         $this->NgayDuong = "$nam-$thang-$ngay";
