@@ -75,42 +75,42 @@ class NgayAm
     private function SolartoLunar($year)
     {
         $listThang = $this->ListThangAm($year);
-			if ($this->NgayDuong < $listThang[0]->NewMoon)
-			{
-                $this->SolartoLunar($year - 1);
-                return;
-            }
-			for ($i = 0; $i < count($listThang); $i++)
-			{
-                if ($i < count($listThang) - 1)
+        if ($this->NgayDuong < $listThang[0]->NewMoon)
+        {
+            $this->SolartoLunar($year - 1);
+            return;
+        }
+        for ($i = 0; $i < count($listThang); $i++)
+        {
+            if ($i < count($listThang) - 1)
+            {
+                if ($this->NgayDuong < $listThang[$i + 1]->NewMoon)
                 {
-                    if ($this->NgayDuong < $listThang[$i + 1]->NewMoon)
-					{
-                        $this->Thang = $listThang[$i]->Number;
-						$this->IsLeapMonth = $listThang[$i]->Leap;
-						$this->Mong = $this->NgayDuong->diff($listThang[$i]->NewMoon)->days + 1;
-						if ($this->Thang == 12)
-                        {
-                            $this->FindTCDCNam($year - 1);
-                        }
-                        else
-                        {
-                            $this->FindTCDCNam($year);
-                        }
-						$this->IsFullMonth = $listThang[$i]->Full;
-						return;
-					}
-				}
-                else
-                {
-                    $this->Thang = 12;
-                    $this->IsLeapMonth = false;
-                    $this->Mong = $this->NgayDuong->diff($listThang[count($listThang) - 1]->NewMoon)->days + 1;
-					$this->FindTCDCNam($year);
-					$this->IsFullMonth = $listThang[count($listThang) - 1]->Full;
-				}
+                    $this->Thang = $listThang[$i]->Number;
+                    $this->IsLeapMonth = $listThang[$i]->Leap;
+                    $this->Mong = $this->NgayDuong->diff($listThang[$i]->NewMoon)->days + 1;
+                    if ($this->Thang == 12)
+                    {
+                        $this->FindTCDCNam($year - 1);
+                    }
+                    else
+                    {
+                        $this->FindTCDCNam($year);
+                    }
+                    $this->IsFullMonth = $listThang[$i]->Full;
+                    return;
+                }
             }
-		}
+            else
+            {
+                $this->Thang = 12;
+                $this->IsLeapMonth = false;
+                $this->Mong = $this->NgayDuong->diff($listThang[count($listThang) - 1]->NewMoon)->days + 1;
+                $this->FindTCDCNam($year);
+                $this->IsFullMonth = $listThang[count($listThang) - 1]->Full;
+            }
+        }
+    }
 
     public function listStructThangAm($so_luong)
     {
