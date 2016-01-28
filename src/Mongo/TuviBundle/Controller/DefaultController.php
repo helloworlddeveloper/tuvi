@@ -2,6 +2,7 @@
 
 namespace Mongo\TuviBundle\Controller;
 
+use Mongo\TuviBundle\CoreTuVi\BinhChu;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -17,6 +18,9 @@ class DefaultController extends Controller
     {
         $anSaoDoc = new AnSao(1, 1, 1, 6, 6, true);
         $boSaoCung = $anSaoDoc->PhanCung();
+        $binhchu = new BinhChu();
+        $urlFileXml = realpath($this->get('kernel')->getRootDir() . "/../db/".'tuvi.xml');
+        $binhchu::LoadFromFile($urlFileXml);
             print_r($boSaoCung);die;
         return array('name' => 'hello');
 

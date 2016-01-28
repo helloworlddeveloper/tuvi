@@ -9,6 +9,8 @@
 namespace Mongo\TuviBundle\CoreTuVi;
 
 
+use Symfony\Component\Config\Definition\Exception\Exception;
+
 class BinhChu
 {
     public $SaoId = array();
@@ -40,20 +42,51 @@ class BinhChu
 
     public static function LoadFromFile($pathFile)
     {
+
+        $saoData = new SaoDatabase();
         $listBinhChu = array();
         $xmlData = simpleXML_load_file($pathFile);
-        if($xmlData ===  true)
-        {
-            foreach($xmlData->children() as $binhChu) {
-                echo $binhChu->title . ", ";
-                echo $binhChu->author . ", ";
-                echo $binhChu->year . ", ";
-                echo $binhChu->price . "<br>";
+        foreach($xmlData->children() as $binhChu) {
+            try{
+                $saosNode = $binhChu->Saos;
+                $cungsNode = $binhChu->Cungs;
+				$lthansNode = $binhChu->LucThans;
+                $lbinh = $binhChu->LoiBinh;
+                $saos = array();
+                $cungs = array();
+                $lthans = array();
+                foreach($saosNode->Sao as $sao)
+                {
+
+                    $CSData = $saoData->getCSData();
+                    $ID = intval(BinhChu::xml_attribute($sao,'ID'));
+                    array_push($saos,$CSData[$ID-1]);
+                }
+
+                foreach($cungsNode->Cung as $cung)
+                {
+                    $ID = intval(BinhChu::xml_attribute($cung,'ID'));
+                    array_push($cungs,$ID);
+                }
+
+                foreach($lthansNode->LucThan as $lucthan)
+                {
+                    $ID = intval(BinhChu::xml_attribute($lucthan,'ID'));
+                    array_push($lthans,$ID);
+                }
+
+                array_push($listBinhChu,new BinhChu($saos,$cungs,$lthans,$lbinh));
+
+            }
+            catch(Exception $e){
+
             }
         }
-        else
-        {
-            die('Can not load file data xml');
-        }
+    }
+
+    public static function xml_attribute($object, $attribute)
+    {
+        if(isset($object[$attribute]))
+            return (string) $object[$attribute];
     }
 }
