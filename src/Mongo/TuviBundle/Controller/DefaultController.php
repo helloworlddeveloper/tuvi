@@ -21,7 +21,7 @@ class DefaultController extends Controller
         $binhchu = new BinhChu();
         $urlFileXml = realpath($this->get('kernel')->getRootDir() . "/../db/".'tuvi.xml');
         $binhchu::LoadFromFile($urlFileXml);
-            print_r($boSaoCung);die;
+            print_r($binhchu);die;
         return array('name' => 'hello');
 
     }

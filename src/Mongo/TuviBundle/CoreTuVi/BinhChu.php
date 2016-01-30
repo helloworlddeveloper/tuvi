@@ -59,29 +59,28 @@ class BinhChu
                 $saos = array();
                 $cungs = array();
                 $lthans = array();
-                foreach ($saosNode->Sao as $sao) {
-
-                    $CSData = $saoData->getCSData();
-                    $ID = intval(BinhChu::xml_attribute($sao, 'ID'));
-                    array_push($saos, $CSData[$ID - 1]);
-                }
-
-                foreach ($cungsNode->Cung as $cung) {
-                    $ID = intval(BinhChu::xml_attribute($cung, 'ID'));
-                    array_push($cungs, $ID);
-                }
-
-                foreach ($lthansNode->LucThan as $lucthan) {
-                    $ID = intval(BinhChu::xml_attribute($lucthan, 'ID'));
-                    array_push($lthans, $ID);
-                }
-
+                $CSData = $saoData->getCSData();
+                if(isset($saosNode->Sao))
+                    foreach ($saosNode->Sao as $sao) {
+                        $ID = intval(BinhChu::xml_attribute($sao, 'ID'));
+                        array_push($saos, $CSData[$ID - 1]);
+                    }
+                if(isset($saosNode->Cung))
+                    foreach ($cungsNode->Cung as $cung) {
+                        $ID = intval(BinhChu::xml_attribute($cung, 'ID'));
+                        array_push($cungs, $ID);
+                    }
+                if(isset($saosNode->LucThan))
+                    foreach ($lthansNode->LucThan as $lucthan) {
+                        $ID = intval(BinhChu::xml_attribute($lucthan, 'ID'));
+                        array_push($lthans, $ID);
+                    }
                 array_push($listBinhChu, new BinhChu($saos, $cungs, $lthans, $lbinh));
-
             } catch (Exception $e) {
 
             }
         }
+        return $listBinhChu;
     }
 
     public static function xml_attribute($object, $attribute)
