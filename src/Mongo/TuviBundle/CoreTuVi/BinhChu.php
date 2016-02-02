@@ -59,12 +59,15 @@ class BinhChu
                 $saos = array();
                 $cungs = array();
                 $lthans = array();
-                $CSData = $saoData->getCSData();
+                $CSData = $saoData->CSData;
+
                 if(isset($saosNode->Sao))
                     foreach ($saosNode->Sao as $sao) {
                         $ID = intval(BinhChu::xml_attribute($sao, 'ID'));
-                        array_push($saos, $CSData[$ID - 1]);
+                        if(isset($CSData[$ID - 1]))
+                            array_push($saos, $CSData[$ID - 1]);
                     }
+
                 if(isset($saosNode->Cung))
                     foreach ($cungsNode->Cung as $cung) {
                         $ID = intval(BinhChu::xml_attribute($cung, 'ID'));
@@ -75,7 +78,10 @@ class BinhChu
                         $ID = intval(BinhChu::xml_attribute($lucthan, 'ID'));
                         array_push($lthans, $ID);
                     }
-                array_push($listBinhChu, new BinhChu($saos, $cungs, $lthans, $lbinh));
+
+                if(count($saos) > 0  || count($cungs) >0 || count($lthans) >0 )
+                    array_push($listBinhChu, new BinhChu($saos, $cungs, $lthans, $lbinh));
+
             } catch (Exception $e) {
 
             }

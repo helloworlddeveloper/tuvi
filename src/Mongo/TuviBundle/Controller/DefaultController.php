@@ -3,6 +3,7 @@
 namespace Mongo\TuviBundle\Controller;
 
 use Mongo\TuviBundle\CoreTuVi\BinhChu;
+use Mongo\TuviBundle\CoreTuVi\SaoDatabase;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,12 +17,40 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $anSaoDoc = new AnSao(1, 1, 1, 6, 6, true);
-        $boSaoCung = $anSaoDoc->PhanCung();
+        $saoDatabase = new SaoDatabase();
+        $cucCach = array(
+                "Thủy nhị cục",
+				"Mộc tam cục",
+				"Kim tứ cục",
+				"Thổ ngủ cục",
+				"Hỏa lục cục"
+			);
         $binhchu = new BinhChu();
         $urlFileXml = realpath($this->get('kernel')->getRootDir() . "/../db/".'tuvi.xml');
         $binhchu::LoadFromFile($urlFileXml);
-            print_r($binhchu);die;
+
+        $dChiGio = 1;
+        $dChiGio = 1;
+        $thangAm = 1;
+        $tcNam = 6;
+        $dcNam = 6;
+        $gioiTinh = true;
+
+        $anSaoDoc = new AnSao($dChiGio, $dChiGio, $thangAm, $tcNam, $dcNam, $gioiTinh);
+
+
+        if ($tcNam % 2 == 1)
+        {
+            $so = 5 * (($tcNam + 1) / 2 - 1) + ($tcNam + 1) / 2 - 1;
+        }
+        else
+        {
+            $so = 5 * ($dcNam / 2 - 1) + $dcNam / 2 - 1;
+        }
+
+        $napAm = $saoDatabase->NapAm[$so];
+        $cuc = $cucCach[$anSaoDoc->Cuc - 2];
+        $boSaoCung = $anSaoDoc->PhanCung();
         return array('name' => 'hello');
 
     }

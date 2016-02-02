@@ -7,25 +7,27 @@
  */
 
 namespace Mongo\TuviBundle\CoreTuVi;
+
 use Mongo\TuviBundle\CoreTuVi\SaoData as SaoData;
 
 class SaoDatabase
 {
-     const KIM = 1;//Kim
-     const THUY = 2;// Th?y
-     const MOC = 3; // M?c
-     const HOA = 4; // H?a
-     const THO = 5; // Th?
-     const BAC = 1; // B?c
-     const NAM = 0; // Nam
+    const KIM = 1;//Kim
+    const THUY = 2;// Th?y
+    const MOC = 3; // M?c
+    const HOA = 4; // H?a
+    const THO = 5; // Th?
+    const BAC = 1; // B?c
+    const NAM = 0; // Nam
 
-     private $CSData = array();
-     private $NapAm = array();
-     private $DChi = array();
-     private $TCan = array();
-     private $LThan = array();
+    public $CSData = array();
+    public $NapAm = array();
+    public $DChi = array();
+    public $TCan = array();
+    public $LThan = array();
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->LThan = array(
             "Mệnh",
             "Phụ mẫu",
@@ -240,10 +242,8 @@ class SaoDatabase
 
     public function FindByID($id)
     {
-        for($i =0 ;$i < 141;$i++)
-        {
-            if($this->getCSData()[$i]->ID == $id)
-            {
+        for ($i = 0; $i < 141; $i++) {
+            if ($this->getCSData()[$i]->ID == $id) {
                 return $this->getCSData()[$i];
             }
         }
