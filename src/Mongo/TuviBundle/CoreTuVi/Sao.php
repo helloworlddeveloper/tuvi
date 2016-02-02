@@ -23,13 +23,13 @@ class Sao
      * */
     public $Type;
     /*
-     * @var string
+     * @var int
      * */
     public $Pos;
     /*
      * @var string
      */
-    public $Dia;
+    public $Dia = "";
     /*
      * @var int
      */
@@ -37,19 +37,19 @@ class Sao
     /*
      * @var bool
      */
-    public  $BacDauTinh;
+    public  $BacDauTinh = false;
     /*
      * @var bool
      */
-    public  $CatTinh;
+    public  $CatTinh = false;
     /*
      * @var bool
      */
-    public  $IsRealSao;
+    public  $IsRealSao =false;
     /*
      * @var bool
      */
-    public  $IsPhiTinh;
+    public  $IsPhiTinh = false;
 
     function __construct($id = null,$pos = null, $type = null)
     {
@@ -63,9 +63,10 @@ class Sao
                 $SaoData = $SaoDatabase->getCSData()[$id - 1];
                 $this->Ten = $SaoData->Ten;
                 $this->Hanh = $SaoData->Hanh;
-                $this->BacDauTinh = $SaoData->BacDT;
-                $this->CatTinh = $SaoData->CacTinh;
+                $this->BacDauTinh = isset($SaoData->BacDT) && !empty($SaoData->BacDT)? $SaoData->BacDT : false;
+                $this->CatTinh =  isset($SaoData->CacTinh) && !empty($SaoData->CacTinh)? $SaoData->CacTinh : false;
                 $this->IsRealSao = true;
+                $this->IsPhiTinh = false;
                 $this->Dia = $this->DacHamDia($pos, $SaoData);
             }
         }

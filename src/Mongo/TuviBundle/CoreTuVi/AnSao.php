@@ -1217,7 +1217,7 @@ class AnSao
         for ($j = 0; $j < count($boSao); $j++) {
             $sao = $boSao[$j];
             if ($sao->Pos > 0) {
-                $BoCung[$sao->Pos - 1] = $sao;
+                array_push($BoCung[$sao->Pos - 1],$sao);
             }
         }
         return $BoCung;
