@@ -1213,9 +1213,7 @@ class AnSao
         for ($i = 0; $i < $sumBoCung; $i++) {
             $BoCung[$i] = array();
         }
-        $boSao = $this->BoSao;
-        for ($j = 0; $j < count($boSao); $j++) {
-            $sao = $boSao[$j];
+        foreach($this->BoSao as $sao) {
             if ($sao->Pos > 0) {
                 array_push($BoCung[$sao->Pos - 1],$sao);
             }
